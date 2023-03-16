@@ -69,7 +69,7 @@ function SearchBox() {
           <div
             className="card"
             style={{
-              width: "80%",
+              maxWidth: "80vh",
               marginTop: "40px",
               marginLeft: "80px",
               marginRight: "80px",
@@ -89,7 +89,7 @@ function SearchBox() {
               <h4>{`${input} DATA:`}</h4>
             </div>
             <div className="card-body">
-              <pre>{`${JSON.stringify(data, undefined, 4)}`}</pre>
+              <pre>{`${JSON.stringify(data, undefined, 2)}`}</pre>
             </div>
           </div>
           <button
