@@ -10,11 +10,18 @@ import { fetchWhoIsData } from "../api";
 function SearchBox() {
   const [input, setInput] = useState("");
   const [data, setData] = useState();
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setSubmitting(true);
     const fetchedData = await fetchWhoIsData(input);
     setData(fetchedData);
+    setSubmitting(false);
+  };
+
+  const handleBackPressed = () => {
+    setData(undefined);
   };
 
   return (
@@ -51,39 +58,54 @@ function SearchBox() {
           <input
             className="btn btn-dark "
             type="submit"
-            //disabled="disabled"
-            //value="Loading..."
+            disabled={submitting}
+            value={submitting ? "Loading..." : "Submit"}
             style={{ width: 150, fontFamily: "Montserrat" }}
           />
         </form>
       )}
       {data && (
-        <div
-          className="card"
-          style={{
-            width: "80%",
-            marginTop: "40px",
-            marginLeft: "80px",
-            marginRight: "80px",
-            marginBottom: "40px",
-            fontFamily: "Montserrat",
-            backgroundColor: "#FFFACD",
-          }}
-        >
+        <>
           <div
-            className="card-header"
+            className="card"
             style={{
-              paddingTop: "5px",
-              paddingBottom: "5px",
-              marginBottom: "5px",
+              width: "80%",
+              marginTop: "40px",
+              marginLeft: "80px",
+              marginRight: "80px",
+              marginBottom: "40px",
+              fontFamily: "Montserrat",
+              backgroundColor: "#FFFACD",
             }}
           >
-            <h4>{`${input} DATA:`}</h4>
+            <div
+              className="card-header"
+              style={{
+                paddingTop: "5px",
+                paddingBottom: "5px",
+                marginBottom: "5px",
+              }}
+            >
+              <h4>{`${input} DATA:`}</h4>
+            </div>
+            <div className="card-body">
+              <pre>{`${JSON.stringify(data, undefined, 4)}`}</pre>
+            </div>
           </div>
-          <div className="card-body">
-            <pre>{`${JSON.stringify(data, undefined, 4)}`}</pre>
-          </div>
-        </div>
+          <button
+            className="btn btn-dark "
+            style={{
+              width: 150,
+              fontFamily: "Montserrat",
+              position: "absolute",
+              left: 20,
+              top: 20,
+            }}
+            onClick={handleBackPressed}
+          >
+            Start Over
+          </button>
+        </>
       )}
     </div>
   );
