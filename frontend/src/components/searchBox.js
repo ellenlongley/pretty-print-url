@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import ReactDOM from "react-dom";
 import { fetchWhoIsData } from "../api";
 
 // need a text input field and a submit button
@@ -10,7 +9,7 @@ import { fetchWhoIsData } from "../api";
 
 function SearchBox() {
   const [input, setInput] = useState("");
-  const [data, setData] = useState("");
+  const [data, setData] = useState();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,20 +18,67 @@ function SearchBox() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Enter a domain or IP address:
+    <div
+      class=""
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      {!data && (
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            paddingTop: 20,
+            paddingBottom: 20,
+            alignItems: "center",
+          }}
+        >
+          <div class="mb-3">
+            <label for="domainIpInput" className="form-label">
+              Enter a Domain or IP address:
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="domainIpInput"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+          </div>
           <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
+            className="btn btn-dark "
+            type="submit"
+            style={{ width: 150 }}
           />
-        </label>
-        <input className="btn btn-primary mr-2 mt-2" type="submit" />
-      </form>
-      {data && <div>{JSON.stringify(data, undefined, 4)}</div>}
-    </>
+        </form>
+      )}
+      {data && (
+        <div
+          class="card"
+          style={{
+            width: "80%",
+            marginTop: "40px",
+            marginLeft: "80px",
+            marginRight: "80px",
+            marginBottom: "40px",
+          }}
+        >
+          <div
+            class="card-header"
+            style={{
+              paddingTop: "5px",
+              paddingBottom: "5px",
+              marginBottom: "5px",
+            }}
+          >
+            <h4>{`${input} DATA:`}</h4>
+          </div>
+          <div class="card-body">
+            <pre>{`${JSON.stringify(data, undefined, 4)}`}</pre>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 
