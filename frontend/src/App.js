@@ -5,7 +5,7 @@ import Icons from "./components/icons";
 const App = () => {
   return (
     <div
-      class="flexbox-container bg-warning text-dark"
+      class="flexbox-container"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -28,7 +28,12 @@ const App = () => {
           backgroundColor: "#d9f2d9",
         }}
       >
-        <h1 class="text-center">Search for a Domain or IP Address</h1>
+        <h1
+          class="text-center"
+          style={{ fontFamily: "Montserrat", fontWeight: 900 }}
+        >
+          Search for a Domain or IP Address
+        </h1>
         <SearchBox />
       </div>
       <Icons />

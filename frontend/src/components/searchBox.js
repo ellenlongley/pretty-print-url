@@ -19,7 +19,6 @@ function SearchBox() {
 
   return (
     <div
-      class=""
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       {!data && (
@@ -34,8 +33,12 @@ function SearchBox() {
           }}
         >
           <div class="mb-3">
-            <label for="domainIpInput" className="form-label">
-              Enter a Domain or IP address:
+            <label
+              for="domainIpInput"
+              className="form-label"
+              style={{ fontFamily: "Montserrat" }}
+            >
+              Enter Domain or IP Address:
             </label>
             <input
               type="text"
@@ -48,7 +51,7 @@ function SearchBox() {
           <input
             className="btn btn-dark "
             type="submit"
-            style={{ width: 150 }}
+            style={{ width: 150, fontFamily: "Montserrat" }}
           />
         </form>
       )}
@@ -61,6 +64,8 @@ function SearchBox() {
             marginLeft: "80px",
             marginRight: "80px",
             marginBottom: "40px",
+            fontFamily: "Montserrat",
+            backgroundColor: "#FFFACD",
           }}
         >
           <div
