@@ -32,7 +32,7 @@ function SearchBox() {
             alignItems: "center",
           }}
         >
-          <div class="mb-3">
+          <div className="mb-3">
             <label
               for="domainIpInput"
               className="form-label"
@@ -51,13 +51,15 @@ function SearchBox() {
           <input
             className="btn btn-dark "
             type="submit"
+            //disabled="disabled"
+            //value="Loading..."
             style={{ width: 150, fontFamily: "Montserrat" }}
           />
         </form>
       )}
       {data && (
         <div
-          class="card"
+          className="card"
           style={{
             width: "80%",
             marginTop: "40px",
@@ -69,7 +71,7 @@ function SearchBox() {
           }}
         >
           <div
-            class="card-header"
+            className="card-header"
             style={{
               paddingTop: "5px",
               paddingBottom: "5px",
@@ -78,7 +80,7 @@ function SearchBox() {
           >
             <h4>{`${input} DATA:`}</h4>
           </div>
-          <div class="card-body">
+          <div className="card-body">
             <pre>{`${JSON.stringify(data, undefined, 4)}`}</pre>
           </div>
         </div>

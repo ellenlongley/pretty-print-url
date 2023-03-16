@@ -7,7 +7,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 const Icons = () => {
   return (
     <div
-      class="flexbox-container"
+      className="flexbox-container"
       style={{
         display: "flex",
         flexDirection: "row",
