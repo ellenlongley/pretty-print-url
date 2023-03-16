@@ -76,7 +76,7 @@ function SearchBox() {
               marginBottom: "5px",
             }}
           >
-            <h4>{`${input} DATA:`}</h4>
+            <h4>{`${input}:`}</h4>
           </div>
           <div class="card-body">
             <pre>{`${JSON.stringify(data, undefined, 4)}`}</pre>
