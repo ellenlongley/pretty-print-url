@@ -2,6 +2,7 @@ Project for pretty printing a url
 - Enter a domain name to view the information of the domain
 - Targets whoisxml api to grab the domain information
 - Started as a coding project for a job interview, but I have since worked on it more, creating my own backend
+- Frontend built in React.js and a Node.js backend
 
 To run:
 - Navigate to server and run `npm install` to install packages
